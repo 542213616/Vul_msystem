@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+	
+    <title> 洞察 </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="/srcpm/static/bootstrap/css/bootstrap.min.css?bootstrap=3.3.6.0" rel="stylesheet">
+
+<script src="/srcpm/static/highcharts.js"></script>
+<script src="/srcpm/static/chartkick.js"></script>
+
+  </head>
+  <body>
+    
+<div class="navbar navbar-inverse" role="navigation">
+	<div class="container">
+
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="/srcpm/">洞察</a>
+		</div>
+
+		<div class="navbar-collapse collapse">
+            <!--
+			<ul class="nav navbar-nav">
+				<li><a href="/srcpm/">主页</a></li>
+			</ul>
+            -->
+
+
+            <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            仪表盘 <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/srcpm/depart_risk_stat">各部门外网风险统计</a></li>
+                            <li><a href="/srcpm/">漏洞数据分析</a></li>
+                        </ul>
+                    </li>
+            </ul>
+
+
+
+
+            
+
+
+			<ul class="nav navbar-nav navbar-left">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        	漏洞提交 <b class="caret"></b>
+                    	</a>
+                    	<ul class="dropdown-menu">
+                        	<li><a href="/srcpm/src/vul_report_add">漏洞报告提交</a></li>
+                        	<li><a href="/srcpm/src/vul_report_list_read">漏洞报告查看</a></li>
+                            <li><a href="/srcpm/src/vul_report_log_read">漏洞日志查看</a></li>
+                    	</ul>
+					</li>
+			</ul>
+
+            
+
+            
+
+            
+
+            <ul class="nav navbar-nav">
+                <li><a href="/srcpm/drops/index">知识库</a></li>
+            </ul>
+            
+        
+
+			<ul class="nav navbar-nav navbar-right">
+				
+                    <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+                        <a href="/srcpm/auth/login" class="dropdown-toggle" data-toggle="dropdown">
+                            登录 <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/srcpm/auth/login">登录</a></li>
+                        </ul>
+                    </li>
+            </ul>
+				
+			</ul>
+
+		</div>
+
+
+	</div>
+</div>
+
+
+    
+<div class="container">
+	
+	
+<div class="page-header">
+	<h1>仪表盘</h1>
+</div>
+
+
+
+    <div style="width:90%">
+    <h3>漏洞类型</h3>
+                <div>
+                    
+<div id="chart-0" style="height: 300px; text-align: center; color: #999;
+                      line-height: 300px; font-size: 14px;
+                      font-family: Lucida Grande, Lucida Sans Unicode,
+                      Verdana, Arial, Helvetica, sans-serif;">
+    Loading...
+</div>
+<script>
+//<![CDATA[
+new Chartkick.AreaChart(document.getElementById("chart-0"), [], {"library": {}});
+//]]>
+</script>
+  
+                 <!--   
+<div id="chart-1" style="height: 300px; text-align: center; color: #999;
+                      line-height: 300px; font-size: 14px;
+                      font-family: Lucida Grande, Lucida Sans Unicode,
+                      Verdana, Arial, Helvetica, sans-serif;">
+    Loading...
+</div>
+<script>
+//<![CDATA[
+new Chartkick.BarChart(document.getElementById("chart-1"), [], {"library": {}});
+//]]>
+</script>
+  -->
+                <!--    
+<div id="chart-2" style="height: 300px; text-align: center; color: #999;
+                      line-height: 300px; font-size: 14px;
+                      font-family: Lucida Grande, Lucida Sans Unicode,
+                      Verdana, Arial, Helvetica, sans-serif;">
+    Loading...
+</div>
+<script>
+//<![CDATA[
+new Chartkick.LineChart(document.getElementById("chart-2"), [], {"0_style": "width:200px; height:20px;", "library": {}});
+//]]>
+</script>
+ -->
+                </div>
+    </div>
+
+
+    <legend></legend>
+
+
+
+    <div style="width:90%">
+    <h3>漏洞(0)状态</h3>
+                <div>
+                    
+<div id="chart-3" style="height: 300px; text-align: center; color: #999;
+                      line-height: 300px; font-size: 14px;
+                      font-family: Lucida Grande, Lucida Sans Unicode,
+                      Verdana, Arial, Helvetica, sans-serif;">
+    Loading...
+</div>
+<script>
+//<![CDATA[
+new Chartkick.PieChart(document.getElementById("chart-3"), {}, {"0_id": "chart-1", "library": {}, "0_height": "400px"});
+//]]>
+</script>
+
+                </div>
+    </div>
+
+
+    <legend></legend>
+
+
+    <div style="width:90%">
+    <h3>漏洞来源</h3>
+                <div>
+                    
+<div id="chart-4" style="height: 300px; text-align: center; color: #999;
+                      line-height: 300px; font-size: 14px;
+                      font-family: Lucida Grande, Lucida Sans Unicode,
+                      Verdana, Arial, Helvetica, sans-serif;">
+    Loading...
+</div>
+<script>
+//<![CDATA[
+new Chartkick.PieChart(document.getElementById("chart-4"), {}, {"0_id": "chart-2", "library": {}, "0_height": "400px"});
+//]]>
+</script>
+
+                </div>
+    </div>
+
+
+    <legend></legend>
+
+
+
+    <div style="width:90%">
+    <h3>资产(0)漏洞数量</h3>
+                <div>
+                    
+<div id="chart-5" style="height: 300px; text-align: center; color: #999;
+                      line-height: 300px; font-size: 14px;
+                      font-family: Lucida Grande, Lucida Sans Unicode,
+                      Verdana, Arial, Helvetica, sans-serif;">
+    Loading...
+</div>
+<script>
+//<![CDATA[
+new Chartkick.LineChart(document.getElementById("chart-5"), [], {"0_style": "width:200px; height:20px;", "library": {}});
+//]]>
+</script>
+
+                </div>
+    </div>
+
+
+    <legend></legend>
+
+
+    <div style="width:90%">
+    <h3>资产(0)逾期已修复漏洞数量</h3>
+                <div>
+                    
+<div id="chart-6" style="height: 300px; text-align: center; color: #999;
+                      line-height: 300px; font-size: 14px;
+                      font-family: Lucida Grande, Lucida Sans Unicode,
+                      Verdana, Arial, Helvetica, sans-serif;">
+    Loading...
+</div>
+<script>
+//<![CDATA[
+new Chartkick.LineChart(document.getElementById("chart-6"), [], {"0_style": "width:200px; height:20px;", "library": {}});
+//]]>
+</script>
+
+                </div>
+    </div>
+
+
+    <legend></legend>
+
+
+    <div style="width:90%">
+    <h3>资产(0)逾期未修复漏洞数量</h3>
+                <div>
+                    
+<div id="chart-7" style="height: 300px; text-align: center; color: #999;
+                      line-height: 300px; font-size: 14px;
+                      font-family: Lucida Grande, Lucida Sans Unicode,
+                      Verdana, Arial, Helvetica, sans-serif;">
+    Loading...
+</div>
+<script>
+//<![CDATA[
+new Chartkick.LineChart(document.getElementById("chart-7"), [], {"0_style": "width:200px; height:20px;", "library": {}});
+//]]>
+</script>
+
+                </div>
+    </div>
+
+
+    <legend></legend>
+
+
+    <div style="width:90%">
+    <h3>部门漏洞数量</h3>
+                <div>
+                    
+<div id="chart-8" style="height: 300px; text-align: center; color: #999;
+                      line-height: 300px; font-size: 14px;
+                      font-family: Lucida Grande, Lucida Sans Unicode,
+                      Verdana, Arial, Helvetica, sans-serif;">
+    Loading...
+</div>
+<script>
+//<![CDATA[
+new Chartkick.ColumnChart(document.getElementById("chart-8"), [], {"library": {}});
+//]]>
+</script>
+
+                </div>
+    </div>
+
+
+    <legend></legend>
+
+
+    <div style="width:90%">
+    <h3>部门未修复漏洞数量</h3>
+                <div>
+                    
+<div id="chart-9" style="height: 300px; text-align: center; color: #999;
+                      line-height: 300px; font-size: 14px;
+                      font-family: Lucida Grande, Lucida Sans Unicode,
+                      Verdana, Arial, Helvetica, sans-serif;">
+    Loading...
+</div>
+<script>
+//<![CDATA[
+new Chartkick.ColumnChart(document.getElementById("chart-9"), [], {"library": {}});
+//]]>
+</script>
+
+                </div>
+    </div>
+
+
+    <legend></legend>
+
+
+    <div style="width:90%">
+    <h3>部门剩余风险</h3>
+                <div>
+                    
+<div id="chart-10" style="height: 300px; text-align: center; color: #999;
+                      line-height: 300px; font-size: 14px;
+                      font-family: Lucida Grande, Lucida Sans Unicode,
+                      Verdana, Arial, Helvetica, sans-serif;">
+    Loading...
+</div>
+<script>
+//<![CDATA[
+new Chartkick.ColumnChart(document.getElementById("chart-10"), [], {"library": {}});
+//]]>
+</script>
+
+                </div>
+    </div>
+
+
+    <legend></legend>  
+
+
+<!--
+
+
+<div id="chart-11" style="height: 300px; text-align: center; color: #999;
+                      line-height: 300px; font-size: 14px;
+                      font-family: Lucida Grande, Lucida Sans Unicode,
+                      Verdana, Arial, Helvetica, sans-serif;">
+    Loading...
+</div>
+<script>
+//<![CDATA[
+new Chartkick.ColumnChart(document.getElementById("chart-11"), [], {"0_min": 400, "library": {}, "0_max": 1000});
+//]]>
+</script>
+
+
+
+<div id="chart-12" style="height: 300px; text-align: center; color: #999;
+                      line-height: 300px; font-size: 14px;
+                      font-family: Lucida Grande, Lucida Sans Unicode,
+                      Verdana, Arial, Helvetica, sans-serif;">
+    Loading...
+</div>
+<script>
+//<![CDATA[
+new Chartkick.BarChart(document.getElementById("chart-12"), [], {"library": {}});
+//]]>
+</script>
+
+
+
+<div id="chart-13" style="height: 300px; text-align: center; color: #999;
+                      line-height: 300px; font-size: 14px;
+                      font-family: Lucida Grande, Lucida Sans Unicode,
+                      Verdana, Arial, Helvetica, sans-serif;">
+    Loading...
+</div>
+<script>
+//<![CDATA[
+new Chartkick.AreaChart(document.getElementById("chart-13"), [], {"library": {}});
+//]]>
+</script>
+
+-->
+
+
+</div>
+
+
+    
+    
+    <script src="/srcpm/static/bootstrap/jquery.min.js?bootstrap=3.3.6.0"></script>
+    <script src="/srcpm/static/bootstrap/js/bootstrap.min.js?bootstrap=3.3.6.0"></script>
+    <script src="/srcpm/static/moment-with-locales.min.js"></script>
+<script>
+moment.locale("en");
+function flask_moment_render(elem) {
+    $(elem).text(eval('moment("' + $(elem).data('timestamp') + '").' + $(elem).data('format') + ';'));
+    $(elem).removeClass('flask-moment').show();
+}
+function flask_moment_render_all() {
+    $('.flask-moment').each(function() {
+        flask_moment_render(this);
+        if ($(this).data('refresh')) {
+            (function(elem, interval) { setInterval(function() { flask_moment_render(elem) }, interval); })(this, $(this).data('refresh'));
+        }
+    })
+}
+$(document).ready(function() {
+    flask_moment_render_all();
+});
+</script>
+    <script>
+moment.locale("zh-CN");
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+
+{% block head %}
+{{ super() }}
+<script src="{{ url_for('main.static', filename='highcharts.js') }}"></script>
+<script src="{{ url_for('main.static', filename='chartkick.js') }}"></script>
+{% endblock %}
+
+
+{% block title %} 应用安全能力仪表盘 {% endblock%}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>应用安全能力仪表盘</h1>
+    <h3>统计截止日期 {{ month }} </h3>
+    <h3>覆盖资产数量 {{ asset_count }} 个</h3>
+</div>
+
+    <div style="width:90%">
+    <h3>覆盖资产数量</h3>
+                <div>
+                    {% area_chart data_asset_count_all %}  
+                 <!--   {% bar_chart data_vul_type %}  -->
+                <!--    {% line_chart data_vul_type with style="width:200px; height:20px;" %} -->
+                </div>
+    </div>
+
+
+    <div style="width:90%">
+    <h3>应用安全能力平均分</h3>
+                <div>
+                    {% area_chart data_sec_score_all %}  
+                 <!--   {% bar_chart data_vul_type %}  -->
+                <!--    {% line_chart data_vul_type with style="width:200px; height:20px;" %} -->
+                </div>
+    </div>
+
+
+    <div style="width:90%">
+    <h3>应用安全能力每月评分</h3>
+                <div>
+                 <!--   {% bar_chart data_vul_type %}  -->
+                {% line_chart data_sec_score_add_month with style="width:200px; height:20px;" %}
+                </div>
+    </div>
+
+
+
+    <div style="width:90%">
+    <h3>应用安全能力分排名</h3>
+                <div>
+                 <!--   {% area_chart data_domain_score %}  -->
+                 <!--   {% bar_chart data_vul_type %}  -->
+                    {% line_chart data_domain_score with style="width:200px; height:20px;" %}
+                </div>
+    </div>
+
+
+        <div style="width:90%">
+    <h3>应用安全能力分布</h3>
+                <div>
+                    {% pie_chart data_score_lv_count with id='chart-2' height='400px' %}
+                </div>
+    </div>
+
+
+        <div style="width:90%">
+    <h3>代码安全能力平均分</h3>
+                <div>
+                    {% area_chart data_code_score_all %}  
+                 <!--   {% bar_chart data_vul_type %}  -->
+                <!--    {% line_chart data_vul_type with style="width:200px; height:20px;" %} -->
+                </div>
+    </div>
+
+
+        <div style="width:90%">
+    <h3>运维安全能力平均分</h3>
+                <div>
+                    {% area_chart data_ops_score_all %}  
+                 <!--   {% bar_chart data_vul_type %}  -->
+                <!--    {% line_chart data_vul_type with style="width:200px; height:20px;" %} -->
+                </div>
+    </div>
+
+
+        <div style="width:90%">
+    <h3>攻击发现能力平均分</h3>
+                <div>
+                    {% area_chart data_attack_score_all %}  
+                 <!--   {% bar_chart data_vul_type %}  -->
+                <!--    {% line_chart data_vul_type with style="width:200px; height:20px;" %} -->
+                </div>
+    </div>
+
+{% endblock %}
+

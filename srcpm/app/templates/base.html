@@ -1,0 +1,188 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block head %}
+	{{ super() }}
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    {{ moment.include_moment(local_js=url_for('main.static', filename='moment-with-locales.min.js') ) }}
+    {{ moment.lang("zh-CN") }}
+{% endblock %}
+
+{% block title%}股转漏洞管理系统 {% endblock%}
+
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+	<div class="container">
+
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="{{ url_for('main.index') }}">系统主页</a>
+		</div>
+
+		<div class="navbar-collapse collapse">
+            <!--
+			<ul class="nav navbar-nav">
+				<li><a href="{{ url_for('main.index') }}">主页</a></li>
+			</ul>
+            -->
+
+
+            <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            数据统计 <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ url_for('main.depart_risk_stat') }}">各部门外网风险统计</a></li>
+                            <li><a href="{{ url_for('main.index') }}">漏洞数据分析</a></li>
+                        </ul>
+                    </li>
+            </ul>
+
+
+
+
+            {% if current_user.can('main.index_count') %}
+            <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            数据分析 <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ url_for('main.index_count') }}">漏洞报告统计</a></li>
+                            <li><a href="{{ url_for('main.index_stats_time') }}">漏洞处理时间统计</a></li>
+                        </ul>
+                    </li>
+            </ul>
+            {% endif %}
+
+
+			<ul class="nav navbar-nav navbar-left">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        	漏洞提交 <b class="caret"></b>
+                    	</a>
+                    	<ul class="dropdown-menu">
+                        	<li><a href="{{ url_for('src.vul_report_add') }}">漏洞报告提交</a></li>
+                        	<li><a href="{{ url_for('src.vul_report_list_read') }}">漏洞报告查看</a></li>
+                            <li><a href="{{ url_for('src.vul_report_log_read') }}">漏洞日志查看</a></li>
+                    	</ul>
+					</li>
+			</ul>
+
+            {% if current_user.is_authenticated %}
+            <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            我的漏洞管理 <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            {% if current_user.can('src.vul_review_list') %}
+                            <li><a href="{{ url_for('src.vul_review_list') }}">未审核漏洞 ({{ current_user.count('未审核') }})</a></li>
+                            {% endif %}
+                            <li><a href="{{ url_for('src.vul_notify_list') }}">新通告漏洞 ({{ current_user.count('已通告') }})</a></li>
+                            <li><a href="{{ url_for('src.vul_processing_list') }}">修复中漏洞 ({{ current_user.count('修复中') }})</a></li>
+                            <li><a href="{{ url_for('src.vul_processing_noalert_list') }}">暂不处理漏洞 ({{ current_user.count('暂不处理') }})</a></li>
+                            <li><a href="{{ url_for('src.vul_retest_list') }}">复测中漏洞 ({{ current_user.count('复测中') }})</a></li>
+                            <li><a href="{{ url_for('src.vul_finished_list') }}">已完成漏洞 ({{ current_user.count('完成') }})</a></li>
+                        </ul>
+                    </li>
+            </ul>
+            {% endif %}
+
+           {% if current_user.is_authenticated %} 
+           <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            资产管理 <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ url_for('src.assets_read') }}">资产查看</a></li>
+                            {% if current_user.can('src.assets_add') %}
+                            <li><a href="{{ url_for('src.assets_add') }}">资产增加</a></li>
+                            {% endif %}
+                        </ul>
+                    </li>
+            </ul>
+            {% endif %}
+
+            <ul class="nav navbar-nav">
+                <li><a href="{{ url_for('drops.index') }}">知识库</a></li>
+            </ul>
+            {% if current_user.can('drops.manager') %}
+            <ul class="nav navbar-nav navbar-left">
+                <li class="dropdown">
+                    <a href="{{ url_for('drops.readdrops')}}" class="dropdown-toggle" data-toggle="dropdown">
+                            drops管理 <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url_for('drops.newdrops')}}">新建drops</a></li>
+                        <li><a href="{{ url_for('drops.readdrops')}}">查看drops</a></li>
+                        <li><a href="{{ url_for('drops.newcate')}}">新建分类</a></li>
+                        <li><a href="{{ url_for('drops.readcate')}}">查看分类</a></li>
+                    </ul>
+                </li>
+            </ul>
+            {% endif %}
+        {% if current_user.can('admin.index') %}
+            <ul class="nav navbar-nav navbar-left">
+                <li class="dropdown">
+                    <a href="{{ url_for('admin.index') }}" class="dropdown-toggle">
+                                管理员后台
+                            </a>
+                </li>
+            </ul>
+            {% endif %}
+
+			<ul class="nav navbar-nav navbar-right">
+				{% if current_user.is_authenticated %}
+				<!--	<li><a href="#">欢迎您！{{ current_user.email.split('@')[0] }}</a></li> -->
+					<li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            {{ current_user.email.split('@')[0] }} <b class="caret"></b>
+                        </a>
+                    	<ul class="dropdown-menu">
+                        	<li><a href="{{ url_for('auth.change_password') }}">修改密码</a></li>
+                        	<li><a href="{{ url_for('auth.logout') }}">退出</a></li>
+                    	</ul>
+					</li>
+				{% else %}
+                    <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+                        <a href="{{ url_for('auth.login') }}" class="dropdown-toggle" data-toggle="dropdown">
+                            登录 <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ url_for('auth.login') }}">登录</a></li>
+                        </ul>
+                    </li>
+            </ul>
+				{% endif %}
+			</ul>
+
+		</div>
+
+
+	</div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	{% for message in get_flashed_messages() %}
+	<div class="alert alert-warning">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		{{ message }}
+	</div>
+	{% endfor %}
+	{% block page_content %} {% endblock %}
+</div>
+{% endblock %}

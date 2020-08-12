@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+
+{% block head %}
+{{ super() }}
+<script src="{{ url_for('src.static', filename='highcharts.js') }}"></script>
+<script src="{{ url_for('src.static', filename='chartkick.js') }}"></script>
+{% endblock %}
+
+
+{% block title %} 应用安全能力分析 {% endblock%}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>应用安全能力分析</h1>
+    <h3>统计时段: {{ startDate }} 至 {{ endDate }}</h3>
+    <h3> 默认显示60天视图 </h3>
+</div>
+    
+
+    <div style="width:90%">
+    <h3>应用安全能力</h3>
+                <div>
+                    {% line_chart asset_score %}  
+                </div>
+    </div>
+
+    <div style="width:90%">
+    <h3>代码安全能力</h3>
+                <div>
+                    {% line_chart asset_code_score %}  
+                </div>
+    </div>
+
+    <div style="width:90%">
+    <h3>运维安全能力</h3>
+                <div>
+                    {% line_chart asset_ops_score %}  
+                </div>
+    </div>
+
+    <div style="width:90%">
+    <h3>攻击响应分</h3>
+                <div>
+                    {% line_chart asset_attack_score %}  
+                </div>
+    </div>
+
+
+{% endblock %}
