@@ -1,6 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
-# 洞察 [![License](https://img.shields.io/aur/license/yaourt.svg)](https://github.com/creditease-sec/insight/blob/open-source/LICENSE)
+
 
 主要由3部分组成：
 * 应用系统资产管理
